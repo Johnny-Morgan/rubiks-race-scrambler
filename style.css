@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 1rem;
+}
+
+.col {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+#shuffle {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+}
