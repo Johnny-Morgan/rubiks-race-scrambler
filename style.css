@@ -1,10 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+
 body {
   margin: 0;
   padding: 0;
+  font-family: "Salsa", cursive;
 }
 
 .container {
   margin-top: 1rem;
+}
+
+h1 {
+  text-align: center;
 }
 
 .col {
@@ -26,4 +33,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+button {
+  margin: 5px;
+  padding: 0.75rem;
+  font-family: "Salsa";
 }
