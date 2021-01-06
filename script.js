@@ -29,34 +29,26 @@ document
   .addEventListener("click", function () {
     document.querySelector(".row3").classList.add("hidden");
     document.querySelector(".row4").classList.add("hidden");
-    document.getElementById(`square-0-3`).classList.add("hidden");
-    document.getElementById(`square-0-4`).classList.add("hidden");
-    document.getElementById(`square-1-3`).classList.add("hidden");
-    document.getElementById(`square-1-4`).classList.add("hidden");
-    document.getElementById(`square-2-3`).classList.add("hidden");
-    document.getElementById(`square-2-4`).classList.add("hidden");
+    for (let i = 0; i <= 2; i++) {
+      document.getElementById(`square-${i}-3`).classList.add("hidden");
+      document.getElementById(`square-${i}-4`).classList.add("hidden");
+    }
   });
+
 document.getElementById("four-by-four").addEventListener("click", function () {
   document.querySelector(".row3").classList.remove("hidden");
   document.querySelector(".row4").classList.add("hidden");
-  document.getElementById(`square-0-3`).classList.remove("hidden");
-  document.getElementById(`square-0-4`).classList.add("hidden");
-  document.getElementById(`square-1-3`).classList.remove("hidden");
-  document.getElementById(`square-1-4`).classList.add("hidden");
-  document.getElementById(`square-2-3`).classList.remove("hidden");
-  document.getElementById(`square-2-4`).classList.add("hidden");
-  document.getElementById(`square-3-3`).classList.remove("hidden");
-  document.getElementById(`square-3-4`).classList.add("hidden");
+  for (let i = 0; i <= 3; i++) {
+    document.getElementById(`square-${i}-3`).classList.remove("hidden");
+    document.getElementById(`square-${i}-4`).classList.add("hidden");
+  }
 });
+
 document.getElementById("five-by-five").addEventListener("click", function () {
   document.querySelector(".row3").classList.remove("hidden");
   document.querySelector(".row4").classList.remove("hidden");
-  document.getElementById(`square-0-3`).classList.remove("hidden");
-  document.getElementById(`square-0-4`).classList.remove("hidden");
-  document.getElementById(`square-1-3`).classList.remove("hidden");
-  document.getElementById(`square-1-4`).classList.remove("hidden");
-  document.getElementById(`square-2-3`).classList.remove("hidden");
-  document.getElementById(`square-2-4`).classList.remove("hidden");
-  document.getElementById(`square-3-3`).classList.remove("hidden");
-  document.getElementById(`square-3-4`).classList.remove("hidden");
+  for (let i = 0; i <= 3; i++) {
+    document.getElementById(`square-${i}-3`).classList.remove("hidden");
+    document.getElementById(`square-${i}-4`).classList.remove("hidden");
+  }
 });
