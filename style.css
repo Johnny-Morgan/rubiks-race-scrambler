@@ -12,12 +12,22 @@ body {
 
 h1 {
   text-align: center;
+  font-size: 225%;
 }
 
 .col {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+  width: 90px;
+  height: 90px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.border-right {
+  border-right: 1px solid black;
+}
+
+.border-btm {
+  border-bottom: 1px solid black;
 }
 
 .row {
@@ -39,4 +49,55 @@ button {
   margin: 5px;
   padding: 0.75rem;
   font-family: "Salsa";
+}
+
+.btn {
+  background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+  background-color: #44c767;
+  border-radius: 1rem;
+  border: 1px solid #18ab29;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 16px 31px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+  margin: 0.75rem;
+}
+
+.btn:hover {
+  background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+  background-color: #5cbf2a;
+}
+
+.btn:active {
+  position: relative;
+  top: 1px;
+}
+
+.btn-shuffle {
+  box-shadow: 3px 4px 0px 0px #8a2a21;
+  background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+  background-color: #c62d1f;
+  border-radius: 0.5rem;
+  border: 1px solid #d02718;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 7px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #810e05;
+  margin-bottom: 1rem;
+}
+
+.btn-shuffle:hover {
+  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+  background-color: #f24437;
+}
+
+.btn-shuffle:active {
+  position: relative;
+  top: 1px;
 }
