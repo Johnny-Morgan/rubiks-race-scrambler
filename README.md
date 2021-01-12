@@ -1,5 +1,7 @@
 # Rubiks Race Scrambler
 
+## [Click here for live site](https://johnny-morgan.github.io/rubiks-race-scrambler/)
+
 ## This website is an online version of the scrambler for the rubiks race game.
 
 #### - The scrambler contains 9 die which make up a 3 x 3 grid. Each dice has 6 sides with 6 colours namely red, orange, green, blue, yellow and white.
