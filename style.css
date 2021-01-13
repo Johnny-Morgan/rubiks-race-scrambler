@@ -37,8 +37,6 @@ h1 {
 
 #shuffle {
   margin-top: 2rem;
-  padding: 1rem 2rem;
-  font-size: 1.25rem;
 }
 
 .hidden {
@@ -59,8 +57,8 @@ button {
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-size: 17px;
-  padding: 16px 31px;
+  font-size: 1rem;
+  padding: 1rem 2rem;
   text-decoration: none;
   text-shadow: 0px 1px 0px #2f6627;
   margin: 0.75rem;
@@ -85,8 +83,8 @@ button {
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-size: 17px;
-  padding: 7px 25px;
+  font-size: 1rem;
+  padding: 1rem 2rem;
   text-decoration: none;
   text-shadow: 0px 1px 0px #810e05;
   margin-bottom: 1rem;
@@ -100,4 +98,21 @@ button {
 .btn-shuffle:active {
   position: relative;
   top: 1px;
+}
+
+@media (max-width: 450px) {
+  .col {
+    width: 60px;
+    height: 60px;
+  }
+
+  .btn-shuffle {
+    font-size: rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.75rem 1.5rem;
+  }
 }
