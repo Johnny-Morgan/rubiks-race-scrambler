@@ -1,32 +1,111 @@
-function generateColor(id) {
-  let tag = Math.trunc(Math.random() * 6) + 1;
+const grid3X3Size = 9;
+const grid4X4Size = 16;
+const grid5X5Size = 25;
 
-  if (tag === 1) {
-    document.getElementById(id).style.backgroundColor = "red";
-  } else if (tag === 2) {
-    document.getElementById(id).style.backgroundColor = "orange";
-  } else if (tag === 3) {
-    document.getElementById(id).style.backgroundColor = "yellow";
-  } else if (tag === 4) {
-    document.getElementById(id).style.backgroundColor = "green";
-  } else if (tag === 5) {
-    document.getElementById(id).style.backgroundColor = "blue";
-  } else if (tag === 6) {
-    document.getElementById(id).style.backgroundColor = "white";
+const grid3X3Length = 3;
+const grid4X4Length = 4;
+const grid5X5Length = 5;
+
+const grid3X3Width = 3;
+const grid4X4Width = 4;
+const grid5X5Width = 5;
+
+let grid3X3Game;
+let grid4X4Game;
+let grid5X5Game;
+
+function generateColors(gridSize) {
+  let tag;
+  let colours = [];
+
+  for (let i = 0; i < gridSize; i++) {
+    tag = Math.trunc(Math.random() * 6) + 1;
+
+    if (tag === 1) {
+      colours.push("red");
+    } else if (tag === 2) {
+      colours.push("orange");
+    } else if (tag === 3) {
+      colours.push("yellow");
+    } else if (tag === 4) {
+      colours.push("green");
+    } else if (tag === 5) {
+      colours.push("blue");
+    } else if (tag === 6) {
+      colours.push("white");
+    }
+  }
+  return colours;
+}
+
+// Function to check if there are more than 4 of any colour for the 3X3 grid
+// If there are more than 4 of any colour in the colours array return false
+function checkIfValidColours(colours) {
+  let redCount = 0;
+  let orangeCount = 0;
+  let yellowCount = 0;
+  let greenCount = 0;
+  let blueCount = 0;
+  let whiteCount = 0;
+
+  if (grid3X3Game) {
+    for (const colour of colours) {
+      if (colour === "red") redCount++;
+      else if (colour === "orange") orangeCount++;
+      else if (colour === "yellow") yellowCount++;
+      else if (colour === "green") greenCount++;
+      else if (colour === "blue") blueCount++;
+      else if (colour === "white") whiteCount++;
+    }
+  }
+
+  if (
+    redCount > 4 ||
+    orangeCount > 4 ||
+    yellowCount > 4 ||
+    greenCount > 4 ||
+    blueCount > 4 ||
+    whiteCount > 4
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function fillGrid(colours, gridWidth, gridLength) {
+  for (let i = 0; i < gridWidth; i++) {
+    for (let j = 0; j < gridLength; j++) {
+      document.getElementById(
+        `square-${i}-${j}`
+      ).style.backgroundColor = colours.shift();
+    }
   }
 }
 
 document.getElementById("shuffle").addEventListener("click", function () {
-  for (let i = 0; i <= 4; i++) {
-    for (let j = 0; j <= 4; j++) {
-      generateColor(`square-${i}-${j}`);
+  let gridColours;
+  if (grid3X3Game) {
+    gridColours = generateColors(grid3X3Size);
+    if (checkIfValidColours(gridColours)) {
+      fillGrid(gridColours, grid3X3Width, grid3X3Length);
     }
+  } else if (grid4X4Game) {
+    gridColours = generateColors(grid4X4Size);
+    fillGrid(gridColours, grid4X4Width, grid4X4Length);
+  } else if (grid5X5Game) {
+    gridColours = generateColors(grid5X5Size);
+    fillGrid(gridColours, grid5X5Width, grid5X5Length);
   }
 });
 
 document
   .getElementById("three-by-three")
   .addEventListener("click", function () {
+    grid3X3Game = true;
+    grid4X4Game = false;
+    grid5X5Game = false;
+
     document.querySelector(".row3").classList.add("hidden");
     document.querySelector(".row4").classList.add("hidden");
     for (let i = 0; i <= 2; i++) {
@@ -41,6 +120,10 @@ document
   });
 
 document.getElementById("four-by-four").addEventListener("click", function () {
+  grid3X3Game = false;
+  grid4X4Game = true;
+  grid5X5Game = false;
+
   document.querySelector(".row3").classList.remove("hidden");
   document.querySelector(".row4").classList.add("hidden");
   for (let i = 0; i <= 3; i++) {
@@ -62,6 +145,10 @@ document.getElementById("four-by-four").addEventListener("click", function () {
 });
 
 document.getElementById("five-by-five").addEventListener("click", function () {
+  grid3X3Game = false;
+  grid4X4Game = false;
+  grid5X5Game = true;
+
   document.querySelector(".row3").classList.remove("hidden");
   document.querySelector(".row4").classList.remove("hidden");
   for (let i = 0; i <= 3; i++) {
