@@ -48,28 +48,58 @@ function checkIfValidColours(colours) {
   let blueCount = 0;
   let whiteCount = 0;
 
+  for (const colour of colours) {
+    if (colour === "red") redCount++;
+    else if (colour === "orange") orangeCount++;
+    else if (colour === "yellow") yellowCount++;
+    else if (colour === "green") greenCount++;
+    else if (colour === "blue") blueCount++;
+    else if (colour === "white") whiteCount++;
+  }
+
   if (grid3X3Game) {
-    for (const colour of colours) {
-      if (colour === "red") redCount++;
-      else if (colour === "orange") orangeCount++;
-      else if (colour === "yellow") yellowCount++;
-      else if (colour === "green") greenCount++;
-      else if (colour === "blue") blueCount++;
-      else if (colour === "white") whiteCount++;
+    if (
+      redCount > 4 ||
+      orangeCount > 4 ||
+      yellowCount > 4 ||
+      greenCount > 4 ||
+      blueCount > 4 ||
+      whiteCount > 4
+    ) {
+      return false;
+    } else {
+      return true;
     }
   }
 
-  if (
-    redCount > 4 ||
-    orangeCount > 4 ||
-    yellowCount > 4 ||
-    greenCount > 4 ||
-    blueCount > 4 ||
-    whiteCount > 4
-  ) {
-    return false;
-  } else {
-    return true;
+  if (grid4X4Game) {
+    if (
+      redCount > 5 ||
+      orangeCount > 5 ||
+      yellowCount > 5 ||
+      greenCount > 5 ||
+      blueCount > 5 ||
+      whiteCount > 5
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  if (grid5X5Game) {
+    if (
+      redCount > 6 ||
+      orangeCount > 6 ||
+      yellowCount > 6 ||
+      greenCount > 6 ||
+      blueCount > 6 ||
+      whiteCount > 6
+    ) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
 
@@ -85,17 +115,37 @@ function fillGrid(colours, gridWidth, gridLength) {
 
 document.getElementById("shuffle").addEventListener("click", function () {
   let gridColours;
+  let validGrid = false;
   if (grid3X3Game) {
     gridColours = generateColors(grid3X3Size);
-    if (checkIfValidColours(gridColours)) {
-      fillGrid(gridColours, grid3X3Width, grid3X3Length);
+    while (!validGrid) {
+      if (checkIfValidColours(gridColours)) {
+        fillGrid(gridColours, grid3X3Width, grid3X3Length);
+        validGrid = true;
+      } else {
+        gridColours = generateColors(grid3X3Size);
+      }
     }
   } else if (grid4X4Game) {
     gridColours = generateColors(grid4X4Size);
-    fillGrid(gridColours, grid4X4Width, grid4X4Length);
+    while (!validGrid) {
+      if (checkIfValidColours(gridColours)) {
+        fillGrid(gridColours, grid4X4Width, grid4X4Length);
+        validGrid = true;
+      } else {
+        gridColours = generateColors(grid4X4Size);
+      }
+    }
   } else if (grid5X5Game) {
     gridColours = generateColors(grid5X5Size);
-    fillGrid(gridColours, grid5X5Width, grid5X5Length);
+    while (!validGrid) {
+      if (checkIfValidColours(gridColours)) {
+        fillGrid(gridColours, grid5X5Width, grid5X5Length);
+        validGrid = true;
+      } else {
+        gridColours = generateColors(grid5X5Size);
+      }
+    }
   }
 });
 
