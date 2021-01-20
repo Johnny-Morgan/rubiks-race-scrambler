@@ -113,39 +113,27 @@ function fillGrid(colours, gridWidth, gridLength) {
   }
 }
 
-document.getElementById("shuffle").addEventListener("click", function () {
+function checkIfValidGrid(gridSize, gridWidth, gridLength) {
   let gridColours;
   let validGrid = false;
+  gridColours = generateColors(gridSize);
+  while (!validGrid) {
+    if (checkIfValidColours(gridColours)) {
+      fillGrid(gridColours, gridWidth, gridLength);
+      validGrid = true;
+    } else {
+      gridColours = generateColors(gridSize);
+    }
+  }
+}
+
+document.getElementById("shuffle").addEventListener("click", function () {
   if (grid3X3Game) {
-    gridColours = generateColors(grid3X3Size);
-    while (!validGrid) {
-      if (checkIfValidColours(gridColours)) {
-        fillGrid(gridColours, grid3X3Width, grid3X3Length);
-        validGrid = true;
-      } else {
-        gridColours = generateColors(grid3X3Size);
-      }
-    }
+    checkIfValidGrid(grid3X3Size, grid3X3Width, grid3X3Length);
   } else if (grid4X4Game) {
-    gridColours = generateColors(grid4X4Size);
-    while (!validGrid) {
-      if (checkIfValidColours(gridColours)) {
-        fillGrid(gridColours, grid4X4Width, grid4X4Length);
-        validGrid = true;
-      } else {
-        gridColours = generateColors(grid4X4Size);
-      }
-    }
+    checkIfValidGrid(grid4X4Size, grid4X4Width, grid4X4Length);
   } else if (grid5X5Game) {
-    gridColours = generateColors(grid5X5Size);
-    while (!validGrid) {
-      if (checkIfValidColours(gridColours)) {
-        fillGrid(gridColours, grid5X5Width, grid5X5Length);
-        validGrid = true;
-      } else {
-        gridColours = generateColors(grid5X5Size);
-      }
-    }
+    checkIfValidGrid(grid5X5Size, grid5X5Width, grid5X5Length);
   }
 });
 
