@@ -1,15 +1,3 @@
-const grid3X3Size = 9;
-const grid4X4Size = 16;
-const grid5X5Size = 25;
-
-const grid3X3Length = 3;
-const grid4X4Length = 4;
-const grid5X5Length = 5;
-
-const grid3X3Width = 3;
-const grid4X4Width = 4;
-const grid5X5Width = 5;
-
 let grid3X3Game;
 let grid4X4Game;
 let grid5X5Game;
@@ -128,6 +116,18 @@ function checkIfValidGrid(gridSize, gridWidth, gridLength) {
 }
 
 document.getElementById("shuffle").addEventListener("click", function () {
+  const grid3X3Size = 9;
+  const grid4X4Size = 16;
+  const grid5X5Size = 25;
+
+  const grid3X3Length = 3;
+  const grid4X4Length = 4;
+  const grid5X5Length = 5;
+
+  const grid3X3Width = 3;
+  const grid4X4Width = 4;
+  const grid5X5Width = 5;
+
   if (grid3X3Game) {
     checkIfValidGrid(grid3X3Size, grid3X3Width, grid3X3Length);
   } else if (grid4X4Game) {
